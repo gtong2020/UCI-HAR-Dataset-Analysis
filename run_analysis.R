@@ -21,7 +21,7 @@ activities <- read.table("UCI HAR Dataset//activity_labels.txt", col.names=c("id
 for (i in 1:nrow(activities)) {
   filtered_data$activity[filtered_data$activity == activities[i, "id"]] <- as.character(activities[i, "name"])
 }
-filtered_data
+
 #step4
 filtered_feature_names <- features[filtered_feature_ids]
 filtered_feature_names <- gsub("\\(\\)", "", filtered_feature_names)
@@ -34,13 +34,24 @@ filtered_feature_names <- gsub("BodyBody", "Body", filtered_feature_names)
 filtered_feature_names <- tolower(filtered_feature_names)
 names(filtered_data) <- filtered_feature_names
 
+
 #step5
 
-tidy_data <- tbl_df(filtered_data) %>%
-  group_by('subject', 'activity') %>%
-  summarise_each(funs(mean)) %>%
-  gather(measurement, mean, -activity, -subject)
+finaldata<- data.frame(Date=as.Date(character()),
+                       File=character(), 
+                       User=character(), 
+                       stringsAsFactors=FALSE) 
+for (i in 1:6) {
+  activity<-activities[i, "name"]
+  Tempdata<-filtered_data[filtered_data$activity == activities[i, "name"],]
+                          for(subject in 1:25){
+                            Tempdata2<-Tempdata[Tempdata$subject==subject,1:66]
+                            Tempdata3<-rbind(apply(Tempdata2,2,mean))
+                            Tempdata3<-cbind(Tempdata3,subject,activity)
+                            finaldata<-rbind(finaldata,Tempdata3)}
+}
+
+write.table(finaldata, file="tidy_data.csv", row.name=FALSE)
 
 
-write.table(tidy_data, file="tidy_data.txt", row.name=FALSE)
-tidy_data
+
