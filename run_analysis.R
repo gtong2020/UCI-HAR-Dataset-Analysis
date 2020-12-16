@@ -25,14 +25,16 @@ for (i in 1:nrow(activities)) {
 #step4
 filtered_feature_names <- features[filtered_feature_ids]
 filtered_feature_names <- gsub("\\(\\)", "", filtered_feature_names)
-filtered_feature_names <- gsub("Acc", "-acceleration", filtered_feature_names)
-filtered_feature_names <- gsub("Mag", "-Magnitude", filtered_feature_names)
-filtered_feature_names <- gsub("^t(.*)$", "\\1-time", filtered_feature_names)
-filtered_feature_names <- gsub("^f(.*)$", "\\1-frequency", filtered_feature_names)
-filtered_feature_names <- gsub("(Jerk|Gyro)", "-\\1", filtered_feature_names)
+filtered_feature_names <- gsub("Acc", "_acceleration", filtered_feature_names)
+filtered_feature_names <- gsub("Mag", "_Magnitude", filtered_feature_names)
+filtered_feature_names <- gsub("^t(.*)$", "\\1_time", filtered_feature_names)
+filtered_feature_names <- gsub("^f(.*)$", "\\1_frequency", filtered_feature_names)
+filtered_feature_names <- gsub("(Jerk|Gyro)", "_\\1", filtered_feature_names)
 filtered_feature_names <- gsub("BodyBody", "Body", filtered_feature_names)
+filtered_feature_names <- gsub("\\-", "\\1_", filtered_feature_names)
 filtered_feature_names <- tolower(filtered_feature_names)
 names(filtered_data) <- filtered_feature_names
+filtered_feature_names
 
 
 #step5
@@ -44,14 +46,14 @@ finaldata<- data.frame(Date=as.Date(character()),
 for (i in 1:6) {
   activity<-activities[i, "name"]
   Tempdata<-filtered_data[filtered_data$activity == activities[i, "name"],]
-                          for(subject in 1:25){
+                          for(subject in 1:30){
                             Tempdata2<-Tempdata[Tempdata$subject==subject,1:66]
                             Tempdata3<-rbind(apply(Tempdata2,2,mean))
                             Tempdata3<-cbind(Tempdata3,subject,activity)
                             finaldata<-rbind(finaldata,Tempdata3)}
 }
 
-write.table(finaldata, file="tidy_data.csv", row.name=FALSE)
+write.table(finaldata, file="tidy_data.txt", row.name=FALSE)
 
 
 
