@@ -1,0 +1,119 @@
+CodeBook for Tidy UCI HAR Dataset
+This CodeBook describes the data contained in the output of the run_analysis.R script contained in this repository. The tidy flat text file can be read using data.table to create a data table for further analysis.
+
+tidy_data <- data.table("tidy_data.txt")
+The script creates a tidy version of the dataset for Human Activity Recognition using smartphones that can be used for further research and analysis. The original UCI HAR Dataset is a public domain dataset built from the recordings of subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensor (see http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
+
+As noted in the above referenced document, the original data comes from experiments that were carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (walking, walking_upstairs, walking_downstairs, sitting, standing, and laying) wearing a Samsung Galaxy S II smartphone on the waist. Using its embedded accelerometer and gyroscope, 3-axial linear acceleration and 3-axial angular velocity were captured at a constant rate of 50Hz. The experiments were video-recorded to label the data manually.
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force was assumed to have only low frequency components, so a filter with a 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
+
+The script generates a combined subset of the original data by extracting the mean and standard deviation features for each of the 33 processed signals, for a total of 66 features (out of the 561 available features from the original feature vector). This combined subset contains 10299 observations of 68 variables, with activity and subject appended to the 66 features.
+
+The combined subset is further reduced by calculating the mean of the observations by activity and subject pair to generate 180 observations (6 activities * 30 subjects) of the same 68 variables. This dataset is tidied to generate a narrow and lean dataset containing 11880 observations with 4 variables each and is saved as a text file in the current working directory with the name tidy_data.txt
+
+Variable name cleanup
+As part of the tidying process the variable names are cleaned up using the following transformations.
+
+filtered_feature_names <- gsub("\\(\\)", "", filtered_feature_names)
+filtered_feature_names <- gsub("Acc", "_acceleration", filtered_feature_names)
+filtered_feature_names <- gsub("Mag", "_Magnitude", filtered_feature_names)
+filtered_feature_names <- gsub("^t(.*)$", "\\1_time", filtered_feature_names)
+filtered_feature_names <- gsub("^f(.*)$", "\\1_frequency", filtered_feature_names)
+filtered_feature_names <- gsub("(Jerk|Gyro)", "_\\1", filtered_feature_names)
+filtered_feature_names <- gsub("BodyBody", "Body", filtered_feature_names)
+filtered_feature_names <- gsub("\\-", "\\1_", filtered_feature_names)
+filtered_feature_names <- tolower(filtered_feature_names)
+names(filtered_data) <- filtered_feature_names
+filtered_feature_names
+
+Description of the UCI HAR variables
+The Tidy dataset consists of 11880  observations summarized by subject (30 volunteers) and activity (6 categories). For each observation (row) in the Tidy dataset, the following 4 columns are provided:
+
+subject
+activity
+measurement
+mean
+
+
+subject
+A numeric identifier (1-30) of the subject who carried out the experiment.
+
+activity
+The activity has following possible values:
+'walking',
+'walking_downstairs'
+'walking_upstairs'
+'laying',
+'sitting',
+'standing',
+
+measurement
+The name of the measurement for which the mean is calculated. This variable can contain one of the following 66 variables:
+
+[1] "body_acceleration_mean_x_time"                  
+ [2] "body_acceleration_mean_y_time"                  
+ [3] "body_acceleration_mean_z_time"                  
+ [4] "body_acceleration_std_x_time"                   
+ [5] "body_acceleration_std_y_time"                   
+ [6] "body_acceleration_std_z_time"                   
+ [7] "gravity_acceleration_mean_x_time"               
+ [8] "gravity_acceleration_mean_y_time"               
+ [9] "gravity_acceleration_mean_z_time"               
+[10] "gravity_acceleration_std_x_time"                
+[11] "gravity_acceleration_std_y_time"                
+[12] "gravity_acceleration_std_z_time"                
+[13] "body_acceleration_jerk_mean_x_time"             
+[14] "body_acceleration_jerk_mean_y_time"             
+[15] "body_acceleration_jerk_mean_z_time"             
+[16] "body_acceleration_jerk_std_x_time"              
+[17] "body_acceleration_jerk_std_y_time"              
+[18] "body_acceleration_jerk_std_z_time"              
+[19] "body_gyro_mean_x_time"                          
+[20] "body_gyro_mean_y_time"                          
+[21] "body_gyro_mean_z_time"                          
+[22] "body_gyro_std_x_time"                           
+[23] "body_gyro_std_y_time"                           
+[24] "body_gyro_std_z_time"                           
+[25] "body_gyro_jerk_mean_x_time"                     
+[26] "body_gyro_jerk_mean_y_time"                     
+[27] "body_gyro_jerk_mean_z_time"                     
+[28] "body_gyro_jerk_std_x_time"                      
+[29] "body_gyro_jerk_std_y_time"                      
+[30] "body_gyro_jerk_std_z_time"                      
+[31] "body_acceleration_magnitude_mean_time"          
+[32] "body_acceleration_magnitude_std_time"           
+[33] "gravity_acceleration_magnitude_mean_time"       
+[34] "gravity_acceleration_magnitude_std_time"        
+[35] "body_acceleration_jerk_magnitude_mean_time"     
+[36] "body_acceleration_jerk_magnitude_std_time"      
+[37] "body_gyro_magnitude_mean_time"                  
+[38] "body_gyro_magnitude_std_time"                   
+[39] "body_gyro_jerk_magnitude_mean_time"             
+[40] "body_gyro_jerk_magnitude_std_time"              
+[41] "body_acceleration_mean_x_frequency"             
+[42] "body_acceleration_mean_y_frequency"             
+[43] "body_acceleration_mean_z_frequency"             
+[44] "body_acceleration_std_x_frequency"              
+[45] "body_acceleration_std_y_frequency"              
+[46] "body_acceleration_std_z_frequency"              
+[47] "body_acceleration_jerk_mean_x_frequency"        
+[48] "body_acceleration_jerk_mean_y_frequency"        
+[49] "body_acceleration_jerk_mean_z_frequency"        
+[50] "body_acceleration_jerk_std_x_frequency"         
+[51] "body_acceleration_jerk_std_y_frequency"         
+[52] "body_acceleration_jerk_std_z_frequency"         
+[53] "body_gyro_mean_x_frequency"                     
+[54] "body_gyro_mean_y_frequency"                     
+[55] "body_gyro_mean_z_frequency"                     
+[56] "body_gyro_std_x_frequency"                      
+[57] "body_gyro_std_y_frequency"                      
+[58] "body_gyro_std_z_frequency"                      
+[59] "body_acceleration_magnitude_mean_frequency"     
+[60] "body_acceleration_magnitude_std_frequency"      
+[61] "body_acceleration_jerk_magnitude_mean_frequency"
+[62] "body_acceleration_jerk_magnitude_std_frequency" 
+[63] "body_gyro_magnitude_mean_frequency"             
+[64] "body_gyro_magnitude_std_frequency"              
+[65] "body_gyro_jerk_magnitude_mean_frequency"        
+[66] "body_gyro_jerk_magnitude_std_frequency"         
