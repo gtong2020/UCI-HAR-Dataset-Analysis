@@ -28,12 +28,14 @@ names(filtered_data) <- filtered_feature_names
 filtered_feature_names
 
 Description of the UCI HAR variables
-The Tidy dataset consists of 11880 observations summarized by activity (6 categories) and subject (30 volunteers) pairs. For each observation (row) in the Tidy dataset, the following 4 columns are provided:
+The Tidy dataset consists of 11880  observations summarized by subject (30 volunteers) and activity (6 categories). For each observation (row) in the Tidy dataset, the following 4 columns are provided:
 
 subject
 activity
 measurement
 mean
+
+
 subject
 A numeric identifier (1-30) of the subject who carried out the experiment.
 
