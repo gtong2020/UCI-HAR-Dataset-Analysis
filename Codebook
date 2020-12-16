@@ -46,71 +46,69 @@ The activity name with the following possible values.
 measurement
 The name of the measurement for which the mean is calculated. This variable can contain one of the following 66 variables:
 
-body-acceleration-jerk-magnitude-mean-frequency
-body-acceleration-jerk-magnitude-mean-time
-body-acceleration-jerk-magnitude-std-frequency
-body-acceleration-jerk-magnitude-std-time
-body-acceleration-jerk-mean-x-frequency
-body-acceleration-jerk-mean-x-time
-body-acceleration-jerk-mean-y-frequency
-body-acceleration-jerk-mean-y-time
-body-acceleration-jerk-mean-z-frequency
-body-acceleration-jerk-mean-z-time
-body-acceleration-jerk-std-x-frequency
-body-acceleration-jerk-std-x-time
-body-acceleration-jerk-std-y-frequency
-body-acceleration-jerk-std-y-time
-body-acceleration-jerk-std-z-frequency
-body-acceleration-jerk-std-z-time
-body-acceleration-magnitude-mean-frequency
-body-acceleration-magnitude-mean-time
-body-acceleration-magnitude-std-frequency
-body-acceleration-magnitude-std-time
-body-acceleration-mean-x-frequency
-body-acceleration-mean-x-time
-body-acceleration-mean-y-frequency
-body-acceleration-mean-y-time
-body-acceleration-mean-z-frequency
-body-acceleration-mean-z-time
-body-acceleration-std-x-frequency
-body-acceleration-std-x-time
-body-acceleration-std-y-frequency
-body-acceleration-std-y-time
-body-acceleration-std-z-frequency
-body-acceleration-std-z-time
-body-gyro-jerk-magnitude-mean-frequency
-body-gyro-jerk-magnitude-mean-time
-body-gyro-jerk-magnitude-std-frequency
-body-gyro-jerk-magnitude-std-time
-body-gyro-jerk-mean-x-time
-body-gyro-jerk-mean-y-time
-body-gyro-jerk-mean-z-time
-body-gyro-jerk-std-x-time
-body-gyro-jerk-std-y-time
-body-gyro-jerk-std-z-time
-body-gyro-magnitude-mean-frequency
-body-gyro-magnitude-mean-time
-body-gyro-magnitude-std-frequency
-body-gyro-magnitude-std-time
-body-gyro-mean-x-frequency
-body-gyro-mean-x-time
-body-gyro-mean-y-frequency
-body-gyro-mean-y-time
-body-gyro-mean-z-frequency
-body-gyro-mean-z-time
-body-gyro-std-x-frequency
-body-gyro-std-x-time
-body-gyro-std-y-frequency
-body-gyro-std-y-time
-body-gyro-std-z-frequency
-body-gyro-std-z-time
-gravity-acceleration-magnitude-mean-time
-gravity-acceleration-magnitude-std-time
-gravity-acceleration-mean-x-time
-gravity-acceleration-mean-y-time
-gravity-acceleration-mean-z-time
-gravity-acceleration-std-x-time
-gravity-acceleration-std-y-time
-gravity-acceleration-std-z-time
-mean
-The mean of the measurements.
+[1] "body_acceleration_mean_x_time"                  
+ [2] "body_acceleration_mean_y_time"                  
+ [3] "body_acceleration_mean_z_time"                  
+ [4] "body_acceleration_std_x_time"                   
+ [5] "body_acceleration_std_y_time"                   
+ [6] "body_acceleration_std_z_time"                   
+ [7] "gravity_acceleration_mean_x_time"               
+ [8] "gravity_acceleration_mean_y_time"               
+ [9] "gravity_acceleration_mean_z_time"               
+[10] "gravity_acceleration_std_x_time"                
+[11] "gravity_acceleration_std_y_time"                
+[12] "gravity_acceleration_std_z_time"                
+[13] "body_acceleration_jerk_mean_x_time"             
+[14] "body_acceleration_jerk_mean_y_time"             
+[15] "body_acceleration_jerk_mean_z_time"             
+[16] "body_acceleration_jerk_std_x_time"              
+[17] "body_acceleration_jerk_std_y_time"              
+[18] "body_acceleration_jerk_std_z_time"              
+[19] "body_gyro_mean_x_time"                          
+[20] "body_gyro_mean_y_time"                          
+[21] "body_gyro_mean_z_time"                          
+[22] "body_gyro_std_x_time"                           
+[23] "body_gyro_std_y_time"                           
+[24] "body_gyro_std_z_time"                           
+[25] "body_gyro_jerk_mean_x_time"                     
+[26] "body_gyro_jerk_mean_y_time"                     
+[27] "body_gyro_jerk_mean_z_time"                     
+[28] "body_gyro_jerk_std_x_time"                      
+[29] "body_gyro_jerk_std_y_time"                      
+[30] "body_gyro_jerk_std_z_time"                      
+[31] "body_acceleration_magnitude_mean_time"          
+[32] "body_acceleration_magnitude_std_time"           
+[33] "gravity_acceleration_magnitude_mean_time"       
+[34] "gravity_acceleration_magnitude_std_time"        
+[35] "body_acceleration_jerk_magnitude_mean_time"     
+[36] "body_acceleration_jerk_magnitude_std_time"      
+[37] "body_gyro_magnitude_mean_time"                  
+[38] "body_gyro_magnitude_std_time"                   
+[39] "body_gyro_jerk_magnitude_mean_time"             
+[40] "body_gyro_jerk_magnitude_std_time"              
+[41] "body_acceleration_mean_x_frequency"             
+[42] "body_acceleration_mean_y_frequency"             
+[43] "body_acceleration_mean_z_frequency"             
+[44] "body_acceleration_std_x_frequency"              
+[45] "body_acceleration_std_y_frequency"              
+[46] "body_acceleration_std_z_frequency"              
+[47] "body_acceleration_jerk_mean_x_frequency"        
+[48] "body_acceleration_jerk_mean_y_frequency"        
+[49] "body_acceleration_jerk_mean_z_frequency"        
+[50] "body_acceleration_jerk_std_x_frequency"         
+[51] "body_acceleration_jerk_std_y_frequency"         
+[52] "body_acceleration_jerk_std_z_frequency"         
+[53] "body_gyro_mean_x_frequency"                     
+[54] "body_gyro_mean_y_frequency"                     
+[55] "body_gyro_mean_z_frequency"                     
+[56] "body_gyro_std_x_frequency"                      
+[57] "body_gyro_std_y_frequency"                      
+[58] "body_gyro_std_z_frequency"                      
+[59] "body_acceleration_magnitude_mean_frequency"     
+[60] "body_acceleration_magnitude_std_frequency"      
+[61] "body_acceleration_jerk_magnitude_mean_frequency"
+[62] "body_acceleration_jerk_magnitude_std_frequency" 
+[63] "body_gyro_magnitude_mean_frequency"             
+[64] "body_gyro_magnitude_std_frequency"              
+[65] "body_gyro_jerk_magnitude_mean_frequency"        
+[66] "body_gyro_jerk_magnitude_std_frequency"         
