@@ -36,7 +36,6 @@ filtered_feature_names <- tolower(filtered_feature_names)
 names(filtered_data) <- filtered_feature_names
 filtered_feature_names
 
-
 #step5
 
 finaldata<- data.frame(Date=as.Date(character()),
