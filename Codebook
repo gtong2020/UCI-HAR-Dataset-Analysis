@@ -16,13 +16,16 @@ Variable name cleanup
 As part of the tidying process the variable names are cleaned up using the following transformations.
 
 filtered_feature_names <- gsub("\\(\\)", "", filtered_feature_names)
-filtered_feature_names <- gsub("Acc", "-acceleration", filtered_feature_names)
-filtered_feature_names <- gsub("Mag", "-Magnitude", filtered_feature_names)
-filtered_feature_names <- gsub("^t(.*)$", "\\1-time", filtered_feature_names)
-filtered_feature_names <- gsub("^f(.*)$", "\\1-frequency", filtered_feature_names)
-filtered_feature_names <- gsub("(Jerk|Gyro)", "-\\1", filtered_feature_names)
+filtered_feature_names <- gsub("Acc", "_acceleration", filtered_feature_names)
+filtered_feature_names <- gsub("Mag", "_Magnitude", filtered_feature_names)
+filtered_feature_names <- gsub("^t(.*)$", "\\1_time", filtered_feature_names)
+filtered_feature_names <- gsub("^f(.*)$", "\\1_frequency", filtered_feature_names)
+filtered_feature_names <- gsub("(Jerk|Gyro)", "_\\1", filtered_feature_names)
 filtered_feature_names <- gsub("BodyBody", "Body", filtered_feature_names)
-And finally all variable names are converted into lowercase.
+filtered_feature_names <- gsub("\\-", "\\1_", filtered_feature_names)
+filtered_feature_names <- tolower(filtered_feature_names)
+names(filtered_data) <- filtered_feature_names
+filtered_feature_names
 
 Description of the UCI HAR variables
 The Tidy dataset consists of 11880 observations summarized by activity (6 categories) and subject (30 volunteers) pairs. For each observation (row) in the Tidy dataset, the following 4 columns are provided:
@@ -35,14 +38,14 @@ subject
 A numeric identifier (1-30) of the subject who carried out the experiment.
 
 activity
-The activity name with the following possible values.
-
-'laying',
-'sitting',
-'standing',
+The activity has following possible values:
 'walking',
 'walking_downstairs'
 'walking_upstairs'
+'laying',
+'sitting',
+'standing',
+
 measurement
 The name of the measurement for which the mean is calculated. This variable can contain one of the following 66 variables:
 
